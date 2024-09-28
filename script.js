@@ -1,5 +1,5 @@
 let timer;
-let isRunning = false;
+let isTimerRunning = false;
 let timeElapsed = 0;
 let lapCounter = 1;
 
@@ -17,31 +17,31 @@ function updateDisplay() {
 }
 
 function startStopwatch() {
-    if (!isRunning) {
-        isRunning = true;
+    if (!isTimerRunning) {
+        isTimerRunning = true;
         timer = setInterval(() => {
-            timeElapsed += 10;
+            timeElapsed += 10; // Increment time by 10 milliseconds
             updateDisplay();
-        }, 10);
+        }, 10); // Update display every 10 milliseconds (could increase this for performance)
     }
 }
 
 function pauseStopwatch() {
-    isRunning = false;
+    isTimerRunning = false;
     clearInterval(timer);
 }
 
 function resetStopwatch() {
-    isRunning = false;
+    isTimerRunning = false;
     clearInterval(timer);
     timeElapsed = 0;
     lapCounter = 1;
     updateDisplay();
-    document.getElementById('laps').innerHTML = '';
+    document.getElementById('laps').innerHTML = ''; // Clear lap list
 }
 
 function recordLap() {
-    if (isRunning) {
+    if (isTimerRunning) {
         const lapTime = formatTime(timeElapsed);
         const lapElement = document.createElement('li');
         lapElement.textContent = `Lap ${lapCounter}: ${lapTime}`;
@@ -49,3 +49,7 @@ function recordLap() {
         lapCounter++;
     }
 }
+timer = setInterval(() => {
+    timeElapsed += 100;
+    updateDisplay();
+}, 100);
