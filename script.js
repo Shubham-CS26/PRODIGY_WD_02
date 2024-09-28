@@ -22,13 +22,15 @@ function startStopwatch() {
         timer = setInterval(() => {
             timeElapsed += 10; // Increment time by 10 milliseconds
             updateDisplay();
-        }, 10); // Update display every 10 milliseconds (could increase this for performance)
+        }, 10); // Update display every 10 milliseconds
     }
 }
 
 function pauseStopwatch() {
-    isTimerRunning = false;
-    clearInterval(timer);
+    if (isTimerRunning) {
+        isTimerRunning = false;
+        clearInterval(timer);
+    }
 }
 
 function resetStopwatch() {
@@ -49,3 +51,11 @@ function recordLap() {
         lapCounter++;
     }
 }
+
+// Event listeners for buttons
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('startBtn').addEventListener('click', startStopwatch);
+    document.getElementById('pauseBtn').addEventListener('click', pauseStopwatch);
+    document.getElementById('resetBtn').addEventListener('click', resetStopwatch);
+    document.getElementById('lapBtn').addEventListener('click', recordLap);
+});
