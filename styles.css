@@ -14,6 +14,7 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Limit the width on larger screens */
 }
 
 .display {
@@ -30,10 +31,15 @@ body {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .controls button:hover {
     background-color: #555;
+}
+
+.controls button:focus {
+    outline: 2px solid #ff9900; /* Highlight buttons when focused */
 }
 
 .laps {
@@ -47,4 +53,16 @@ body {
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 600px) {
+    .controls button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .display {
+        font-size: 36px;
+    }
 }
