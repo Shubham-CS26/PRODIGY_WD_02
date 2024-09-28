@@ -49,7 +49,3 @@ function recordLap() {
         lapCounter++;
     }
 }
-timer = setInterval(() => {
-    timeElapsed += 100;
-    updateDisplay();
-}, 100);
